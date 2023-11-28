@@ -87,6 +87,7 @@ class Analyser:
         stats_collected = False
         for op_cfg, op in zip(self.cfg.process, self.ops):
             op_name = list(op_cfg.keys())[0]
+            logger.info(f'Processing {op_name}')
             if isinstance(op, Filter):
                 if Fields.stats not in dataset.features:
                     # only add stats when calling filter op

@@ -1,6 +1,7 @@
 import math
 import os
 
+from loguru import logger
 import matplotlib.pyplot as plt
 import pandas as pd
 from tqdm import tqdm
@@ -116,6 +117,7 @@ class ColumnWiseAnalysis:
             subfigs = fig.subfigures(rec_row, rec_col, wspace=0.01)
         for i, column_name in enumerate(tqdm(columns.to_list(),
                                              desc='Column')):
+            logger.info(f'Analysing column: {column_name}')
             data = self.stats[column_name]
             # explode data to flatten inner list
             data = data.explode().infer_objects()
