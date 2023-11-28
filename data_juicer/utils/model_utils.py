@@ -16,9 +16,9 @@ BACKUP_MODEL_LINKS = {
 
     # tokenizer and language model for English from sentencepiece and KenLM
     '%s.sp.model':
-    'https://huggingface.co/edugp/kenlm/resolve/main/wikipedia/',
+    'https://huggingface.co/mrorii/kenlm/resolve/main/wikipedia/',
     '%s.arpa.bin':
-    'https://huggingface.co/edugp/kenlm/resolve/main/wikipedia/',
+    'https://huggingface.co/mrorii/kenlm/resolve/main/wikipedia/',
 
     # sentence split model from nltk punkt
     'punkt.%s.pickle':
@@ -140,7 +140,8 @@ def prepare_nltk_model(model_name, lang):
         'en': 'english',
         'fr': 'french',
         'pt': 'portuguese',
-        'es': 'spanish'
+        'es': 'spanish',
+        'ja': 'japanese',
     }
     assert lang in nltk_to_punkt.keys(
     ), 'lang must be one of the following: {}'.format(
