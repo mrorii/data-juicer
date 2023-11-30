@@ -30,7 +30,7 @@ class OverallAnalysis:
             os.makedirs(self.output_path)
 
         # default percentiles to analyse
-        self.default_percentiles = [0.1, 0.25, 0.5, 0.75, 0.9]
+        self.default_percentiles = [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99]
         # supported dtypes of column to be analysed
         # Notice: there won't be mixed types in a column because the stats is
         # obtained from Dataset, which doesn't allow mixed types.
