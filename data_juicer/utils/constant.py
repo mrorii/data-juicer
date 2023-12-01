@@ -116,6 +116,7 @@ class StatsKeysConstant(object):
     num_dependency_edges = 'num_dependency_edges'
     num_token = 'num_token'
     num_words = 'num_words'
+    num_line = 'num_line'
     word_rep_ratio = 'word_rep_ratio'
 
     # image
