@@ -5,7 +5,7 @@ from loguru import logger
 from data_juicer.analysis import ColumnWiseAnalysis, OverallAnalysis
 from data_juicer.config import init_configs
 from data_juicer.format import load_formatter
-from data_juicer.ops import Filter, load_ops
+from data_juicer.ops import Filter, Mapper, load_ops
 from data_juicer.utils import cache_utils
 from data_juicer.utils.constant import Fields
 
@@ -88,6 +88,10 @@ class Analyser:
         for op_cfg, op in zip(self.cfg.process, self.ops):
             op_name = list(op_cfg.keys())[0]
             logger.info(f'Processing {op_name}')
+            if isinstance(op, Mapper):
+                dataset = dataset.map(function=op.process,
+                                      num_proc=self.cfg.np,
+                                      desc=op_name + '_process')
             if isinstance(op, Filter):
                 if Fields.stats not in dataset.features:
                     # only add stats when calling filter op
